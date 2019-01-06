@@ -1,25 +1,41 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Main from "./components/main";
+import "./App.css";
+import { fetchApi, fetchParam, getData } from "./api";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  clear() {
+    localStorage.clear();
+  }
+
+  setAll() {
+    fetchParam();
+    fetchApi();
+  }
+
+  setParam() {
+    fetchParam();
+  }
+
+  setApi() {
+    fetchApi();
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <button onClick={this.clear}>CLEAR</button>
+        <button onClick={this.setAll}>SET_ALL</button>
+        <button onClick={this.setApi}>SET_API</button>
+        <button onClick={this.setParam}>SET_PARAM</button>
+        <br />
+        {<Main attributes={getData("Btc")} title="Btc" />}
+        {<Main attributes={getData("Eth")} title="Eth" />}
+        {<Main attributes={getData("Ltc")} title="Ltc" />}
       </div>
     );
   }
