@@ -26,9 +26,9 @@ class Main extends Component {
         <br />
         Paribu Komisyon: {this.props.attributes.paribuKomisyon}%
         <br />
-        Coinbase Fiyat: ${this.props.attributes.coinbaseFiyat}
+        CoinbaseAsk Fiyat: ${this.props.attributes.coinbaseFiyat}
         <br />
-        Paribu Fiyat: ₺{this.props.attributes.paribuFiyat}
+        ParibuBid Fiyat: ₺{this.props.attributes.paribuFiyat}
         <br />
         <br />
         Giden Toplam: ${gidenToplam}
