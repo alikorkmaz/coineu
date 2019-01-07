@@ -20,7 +20,7 @@ class ReverseMain extends Component {
         <br />
         Yollanan: ₺{this.props.attributes.yollanan}
         <br />
-        Wire Bedeli: ₺{this.props.attributes.wireBedeli}
+        Transfer Bedeli: ₺{this.props.attributes.wireBedeli}
         <br />
         Coinbase Komisyon: {this.props.attributes.coinbaseKomisyon}%
         <br />
