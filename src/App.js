@@ -12,7 +12,7 @@ class App extends Component {
   state = {};
 
   fetchApi() {
-    fetch("https://www.paribu.com/ticker")
+    fetch("https://cors-anywhere.herokuapp.com/https://www.paribu.com/ticker")
       .then(res => res.json())
       .then(jsonData => {
         console.log(jsonData);
