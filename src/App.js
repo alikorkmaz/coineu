@@ -15,7 +15,6 @@ class App extends Component {
     fetch("https://cors-anywhere.herokuapp.com/https://www.paribu.com/ticker")
       .then(res => res.json())
       .then(jsonData => {
-        console.log(jsonData);
         this.setState({
           paribuBtcBid: jsonData.BTC_TL.highestBid,
           paribuBtcAsk: jsonData.BTC_TL.lowestAsk,
@@ -23,6 +22,8 @@ class App extends Component {
           paribuEthAsk: jsonData.ETH_TL.lowestAsk,
           paribuLtcBid: jsonData.LTC_TL.highestBid,
           paribuLtcAsk: jsonData.LTC_TL.lowestAsk,
+          paribuXrpBid: jsonData.XRP_TL.highestBid,
+          paribuXrpAsk: jsonData.XRP_TL.lowestAsk,
           yollanan: 25000,
           wireBedeli: 100,
           transferBedeli: 10,
@@ -53,10 +54,20 @@ class App extends Component {
               coinbaseLtcAsk: jsonData.ask
             });
           });
+        fetch(
+          "https://cors-anywhere.herokuapp.com/https://www.bitstamp.net/api/v2/ticker/xrpeur/"
+        )
+          .then(res => res.json())
+          .then(jsonData => {
+            this.setState({
+              coinbaseXrpBid: jsonData.bid,
+              coinbaseXrpAsk: jsonData.ask
+            });
+          });
       });
   }
 
-  getData(type) {
+  getData(type, isBitstamp) {
     return {
       yollanan: this.state.yollanan,
       wireBedeli: this.state.wireBedeli,
@@ -102,6 +113,15 @@ class App extends Component {
           <ReverseMain
             attributes={this.getDataReverse("Ltc")}
             title="ReverseLtc"
+          />
+        }
+        <hr />
+        <hr />
+        {<Main attributes={this.getData("Xrp")} title="Xrp (euro)" />}
+        {
+          <ReverseMain
+            attributes={this.getDataReverse("Xrp")}
+            title="ReverseXrp (euro)"
           />
         }
       </div>
