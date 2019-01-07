@@ -48,3 +48,14 @@ export function getData(type) {
     coinbaseFiyat: localStorage.getItem("coinbase" + type + "Ask")
   };
 }
+
+export function getDataReverse(type) {
+  return {
+    yollanan: localStorage.getItem("yollanan"),
+    wireBedeli: localStorage.getItem("wireBedeli"),
+    coinbaseKomisyon: localStorage.getItem("coinbaseKomisyon"),
+    paribuKomisyon: localStorage.getItem("paribuKomisyon"),
+    paribuFiyat: localStorage.getItem("paribu" + type + "Ask"),
+    coinbaseFiyat: localStorage.getItem("coinbase" + type + "Bid")
+  };
+}
