@@ -86,9 +86,24 @@ class App extends Component {
         {<Main attributes={this.getData("Ltc")} title="Ltc" />}
         <hr />
         <hr />
-        {<ReverseMain attributes={this.getData("Btc")} title="ReverseBtc" />}
-        {<ReverseMain attributes={this.getData("Eth")} title="ReverseEth" />}
-        {<ReverseMain attributes={this.getData("Ltc")} title="ReverseLtc" />}
+        {
+          <ReverseMain
+            attributes={this.getDataReverse("Btc")}
+            title="ReverseBtc"
+          />
+        }
+        {
+          <ReverseMain
+            attributes={this.getDataReverse("Eth")}
+            title="ReverseEth"
+          />
+        }
+        {
+          <ReverseMain
+            attributes={this.getDataReverse("Ltc")}
+            title="ReverseLtc"
+          />
+        }
       </div>
     );
   }
