@@ -32,9 +32,9 @@ class Main extends Component {
         <br />
         PA Komisyon: {this.props.attributes.paribuKomisyon}%
         <br />
-        CB Fiyat: ${(+this.props.attributes.coinbaseFiyat).toFixed(1)}
+        CB Fiyat: ${(+this.props.attributes.coinbaseFiyat).toFixed(3)}
         <br />
-        PA Fiyat: ₺{(+this.props.attributes.paribuFiyat).toFixed(1)}
+        PA Fiyat: ₺{(+this.props.attributes.paribuFiyat).toFixed(3)}
         <br />
         Giden : ${gidenToplam}
         <br />
