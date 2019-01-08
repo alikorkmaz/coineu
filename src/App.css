@@ -30,3 +30,17 @@
     transform: rotate(360deg);
   }
 }
+
+.negative {
+  background-color: tomato;
+  border-radius: 8px;
+}
+
+.positive {
+  background-color: darkseagreen;
+  border-radius: 8px;
+}
+
+.custom-btn {
+  width: 100%;
+}

@@ -15,30 +15,64 @@ class Main extends Component {
     const paribudanGelen = paribuKomisyonlu * this.props.attributes.paribuFiyat;
     const kur = paribudanGelen / this.props.attributes.yollanan;
     return (
-      <div>
+      <div
+        className={
+          this.props.attributes.guncelKur < kur && !this.props.passive
+            ? "positive"
+            : "negative"
+        }
+      >
         <b>{this.props.title}</b>
         <br />
         Yollanan: ${this.props.attributes.yollanan}
         <br />
         Wire Bedeli: ${this.props.attributes.wireBedeli}
         <br />
-        Coinbase Komisyon: {this.props.attributes.coinbaseKomisyon}%
+        CB Komisyon: {this.props.attributes.coinbaseKomisyon}%
         <br />
-        Paribu Komisyon: {this.props.attributes.paribuKomisyon}%
+        PA Komisyon: {this.props.attributes.paribuKomisyon}%
         <br />
-        CoinbaseAsk Fiyat: ${this.props.attributes.coinbaseFiyat}
+        CB Fiyat: ${(+this.props.attributes.coinbaseFiyat).toFixed(1)}
         <br />
-        ParibuBid Fiyat: ₺{this.props.attributes.paribuFiyat}
+        PA Fiyat: ₺{(+this.props.attributes.paribuFiyat).toFixed(1)}
         <br />
+        Giden : ${gidenToplam}
         <br />
-        Giden Toplam: ${gidenToplam}
+        CB: {coinbasedenAlinan.toFixed(3)}
         <br />
-        Coinbaseden Alinan: {coinbasedenAlinan.toFixed(3)}
+        PA: ₺{paribudanGelen.toFixed(2)}
         <br />
-        Paribudan Gelen: ₺{paribudanGelen.toFixed(2)}
-        <br />
-        Kur: ${kur.toFixed(3)}
-        <hr />
+        Satım Kur: ${kur.toFixed(3)}
+        <div className="row">
+          <div className="col-xs-6">
+            <button
+              onClick={() =>
+                this.props.onIncrease(
+                  this.props.ratio,
+                  this.props.type,
+                  this.props.attributes.paribuFiyat
+                )
+              }
+              className="custom-btn btn btn-primary btn-xs"
+            >
+              +{this.props.ratio}
+            </button>
+          </div>
+          <div className="col-xs-6">
+            <button
+              onClick={() =>
+                this.props.onIncrease(
+                  +this.props.ratio * -1,
+                  this.props.type,
+                  this.props.attributes.paribuFiyat
+                )
+              }
+              className="custom-btn btn btn-primary btn-xs"
+            >
+              -{this.props.ratio}
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

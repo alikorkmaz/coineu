@@ -7,6 +7,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.fetchApi();
+    this.increase = this.increase.bind(this);
+    this.increaseReverse = this.increaseReverse.bind(this);
   }
 
   state = {};
@@ -64,17 +66,25 @@ class App extends Component {
               coinbaseXrpAsk: jsonData.ask
             });
           });
+        fetch("https://ferdielik.com/rest/crypto/old/ticker")
+          .then(res => res.json())
+          .then(jsonData => {
+            this.setState({
+              guncelKur: jsonData.dollar
+            });
+          });
       });
   }
 
-  getData(type, isBitstamp) {
+  getData(type) {
     return {
       yollanan: this.state.yollanan,
       wireBedeli: this.state.wireBedeli,
       coinbaseKomisyon: this.state.coinbaseKomisyon,
       paribuKomisyon: this.state.paribuKomisyon,
       paribuFiyat: this.state["paribu" + type + "Bid"],
-      coinbaseFiyat: this.state["coinbase" + type + "Ask"]
+      coinbaseFiyat: this.state["coinbase" + type + "Ask"],
+      guncelKur: this.state.guncelKur
     };
   }
 
@@ -85,45 +95,139 @@ class App extends Component {
       coinbaseKomisyon: this.state.coinbaseKomisyon,
       paribuKomisyon: this.state.paribuKomisyon,
       paribuFiyat: this.state["paribu" + type + "Ask"],
-      coinbaseFiyat: this.state["coinbase" + type + "Bid"]
+      coinbaseFiyat: this.state["coinbase" + type + "Bid"],
+      guncelKur: this.state.guncelKur
     };
+  }
+
+  increase(ratio, type, oldVal) {
+    let newVal = +oldVal + +ratio;
+
+    this.setState({
+      ["paribu" + type + "Bid"]: newVal
+    });
+  }
+
+  increaseReverse(ratio, type, oldVal) {
+    let newVal = +oldVal + +ratio;
+
+    this.setState({
+      ["coinbase" + type + "Bid"]: newVal
+    });
   }
 
   render() {
     return (
       <div className="App">
-        {<Main attributes={this.getData("Btc")} title="Btc" />}
-        {<Main attributes={this.getData("Eth")} title="Eth" />}
-        {<Main attributes={this.getData("Ltc")} title="Ltc" />}
-        <hr />
-        <hr />
-        {
-          <ReverseMain
-            attributes={this.getDataReverse("Btc")}
-            title="ReverseBtc"
-          />
-        }
-        {
-          <ReverseMain
-            attributes={this.getDataReverse("Eth")}
-            title="ReverseEth"
-          />
-        }
-        {
-          <ReverseMain
-            attributes={this.getDataReverse("Ltc")}
-            title="ReverseLtc"
-          />
-        }
-        <hr />
-        <hr />
-        {<Main attributes={this.getData("Xrp")} title="Xrp (euro)" />}
-        {
-          <ReverseMain
-            attributes={this.getDataReverse("Xrp")}
-            title="ReverseXrp (euro)"
-          />
-        }
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12">
+              <b>Kur: {this.state.guncelKur}</b>
+            </div>
+          </div>
+          <br />
+          <div className="row">
+            <div className="col-xs-6">
+              {
+                <Main
+                  attributes={this.getData("Btc")}
+                  ratio="50"
+                  title="BTC"
+                  type="Btc"
+                  onIncrease={this.increase}
+                />
+              }
+            </div>
+            <div className="col-xs-6">
+              {
+                <ReverseMain
+                  attributes={this.getDataReverse("Btc")}
+                  ratio="10"
+                  title="Reverse BTC"
+                  type="Btc"
+                  onIncrease={this.increaseReverse}
+                />
+              }
+            </div>
+          </div>
+          <br />
+          <div className="row">
+            <div className="col-xs-6">
+              {
+                <Main
+                  attributes={this.getData("Eth")}
+                  ratio="5"
+                  title="ETH"
+                  type="Eth"
+                  onIncrease={this.increase}
+                />
+              }
+            </div>
+            <div className="col-xs-6">
+              {
+                <ReverseMain
+                  attributes={this.getDataReverse("Eth")}
+                  ratio="1"
+                  title="Reverse ETH"
+                  onIncrease={this.increaseReverse}
+                  type="Eth"
+                />
+              }
+            </div>
+          </div>
+          <br />
+          <div className="row">
+            <div className="col-xs-6">
+              {
+                <Main
+                  attributes={this.getData("Ltc")}
+                  ratio="1"
+                  title="LTC"
+                  type="Ltc"
+                  onIncrease={this.increase}
+                />
+              }
+            </div>
+            <div className="col-xs-6">
+              {
+                <ReverseMain
+                  attributes={this.getDataReverse("Ltc")}
+                  ratio="0.2"
+                  title="Reverse LTC"
+                  onIncrease={this.increaseReverse}
+                  type="Ltc"
+                />
+              }
+            </div>
+          </div>
+          <br />
+          <div className="row">
+            <div className="col-xs-6">
+              {
+                <Main
+                  attributes={this.getData("Xrp")}
+                  title="XRP"
+                  ratio="0.01"
+                  passive
+                  type="Xrp"
+                  onIncrease={this.increase}
+                />
+              }
+            </div>
+            <div className="col-xs-6">
+              {
+                <ReverseMain
+                  attributes={this.getDataReverse("Xrp")}
+                  title="Reverse XRP"
+                  ratio="0.002"
+                  passive
+                  onIncrease={this.increaseReverse}
+                  type="Xrp"
+                />
+              }
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

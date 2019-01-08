@@ -15,30 +15,64 @@ class ReverseMain extends Component {
       coinbaseKomisyonlu * this.props.attributes.coinbaseFiyat;
     const kur = this.props.attributes.yollanan / coinbasedenGelen;
     return (
-      <div>
+      <div
+        className={
+          this.props.attributes.guncelKur > kur && !this.props.passive
+            ? "positive"
+            : "negative"
+        }
+      >
         <b>{this.props.title}</b>
         <br />
         Yollanan: ₺{this.props.attributes.yollanan}
         <br />
         Transfer Bedeli: ₺{this.props.attributes.wireBedeli}
         <br />
-        Coinbase Komisyon: {this.props.attributes.coinbaseKomisyon}%
+        CB Komisyon: {this.props.attributes.coinbaseKomisyon}%
         <br />
-        Paribu Komisyon: {this.props.attributes.paribuKomisyon}%
+        PA Komisyon: {this.props.attributes.paribuKomisyon}%
         <br />
-        CoinbaseBid Fiyat: ${this.props.attributes.coinbaseFiyat}
+        CB Fiyat: ${(+this.props.attributes.coinbaseFiyat).toFixed(1)}
         <br />
-        ParibuAsk Fiyat: ₺{this.props.attributes.paribuFiyat}
+        PA Fiyat: ₺{(+this.props.attributes.paribuFiyat).toFixed(1)}
         <br />
+        Giden: ₺{gidenToplam}
         <br />
-        Giden Toplam: ₺{gidenToplam}
+        CB: {paribudanAlinan.toFixed(3)}
         <br />
-        Coinbaseden Alinan: {paribudanAlinan.toFixed(3)}
+        PA: ₺{coinbasedenGelen.toFixed(2)}
         <br />
-        Paribudan Gelen: ₺{coinbasedenGelen.toFixed(2)}
-        <br />
-        Kur: ${kur.toFixed(3)}
-        <hr />
+        Alım Kur: ${kur.toFixed(3)}
+        <div className="row">
+          <div className="col-xs-6">
+            <button
+              onClick={() =>
+                this.props.onIncrease(
+                  this.props.ratio,
+                  this.props.type,
+                  this.props.attributes.coinbaseFiyat
+                )
+              }
+              className="custom-btn btn btn-primary btn-xs"
+            >
+              +{this.props.ratio}
+            </button>
+          </div>
+          <div className="col-xs-6">
+            <button
+              onClick={() =>
+                this.props.onIncrease(
+                  +this.props.ratio * -1,
+                  this.props.type,
+                  this.props.attributes.coinbaseFiyat
+                )
+              }
+              className="custom-btn btn btn-primary btn-xs"
+            >
+              -{this.props.ratio}
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
