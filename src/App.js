@@ -85,8 +85,7 @@ class App extends Component {
           });
 
         let headers = new Headers({
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+          "User-Agent": ""
         });
         fetch("https://cors-anywhere.herokuapp.com/https://www.doviz.com", {
           method: "GET",
