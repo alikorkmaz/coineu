@@ -215,7 +215,7 @@ class App extends Component {
             </div>
           </div>
           <br />
-          <div className="row">
+          {/* <div className="row">
             <div className="col-xs-6">
               {
                 <Main
@@ -240,7 +240,7 @@ class App extends Component {
                 />
               }
             </div>
-          </div>
+          </div> */}
         </div>
         <br />
         <br />
