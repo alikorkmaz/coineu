@@ -1,13 +1,13 @@
 {
-  "main.css": "/coineu/static/css/main.23973e88.chunk.css",
-  "main.js": "/coineu/static/js/main.bf39ec68.chunk.js",
-  "main.js.map": "/coineu/static/js/main.bf39ec68.chunk.js.map",
+  "main.css": "/coineu/static/css/main.beb3a04a.chunk.css",
+  "main.js": "/coineu/static/js/main.ff10a6dd.chunk.js",
+  "main.js.map": "/coineu/static/js/main.ff10a6dd.chunk.js.map",
   "static/js/1.15cadee0.chunk.js": "/coineu/static/js/1.15cadee0.chunk.js",
   "static/js/1.15cadee0.chunk.js.map": "/coineu/static/js/1.15cadee0.chunk.js.map",
   "runtime~main.js": "/coineu/static/js/runtime~main.1040f0dc.js",
   "runtime~main.js.map": "/coineu/static/js/runtime~main.1040f0dc.js.map",
-  "static/css/main.23973e88.chunk.css.map": "/coineu/static/css/main.23973e88.chunk.css.map",
+  "static/css/main.beb3a04a.chunk.css.map": "/coineu/static/css/main.beb3a04a.chunk.css.map",
   "index.html": "/coineu/index.html",
-  "precache-manifest.802c44dd6ad6de80937b835ac58e7b3f.js": "/coineu/precache-manifest.802c44dd6ad6de80937b835ac58e7b3f.js",
+  "precache-manifest.a05b1f384c93390fb747c38c565340ab.js": "/coineu/precache-manifest.a05b1f384c93390fb747c38c565340ab.js",
   "service-worker.js": "/coineu/service-worker.js"
 }
