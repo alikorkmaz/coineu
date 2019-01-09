@@ -2,7 +2,7 @@
   "name": "coin-arbitrage",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alikorkmaz.github.io/coin",
+  "homepage": "https://alikorkmaz.github.io/coineu",
   "dependencies": {
     "bootstrap": "^4.2.1",
     "gh-pages": "^2.0.1",

@@ -17,7 +17,7 @@ class Main extends Component {
     return (
       <div
         className={
-          +this.props.attributes.guncelKur < +kur ? "positive" : "negative"
+          this.props.attributes.guncelKur < kur ? "positive" : "negative"
         }
       >
         <b>{this.props.title}</b>
