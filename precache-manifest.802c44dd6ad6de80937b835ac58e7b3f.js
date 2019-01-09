@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/coineu/static/js/runtime~main.1040f0dc.js"
   },
   {
-    "revision": "efa38997373b1fbe6f04",
-    "url": "/coineu/static/js/main.efa38997.chunk.js"
+    "revision": "bf39ec68c9861c86743a",
+    "url": "/coineu/static/js/main.bf39ec68.chunk.js"
   },
   {
     "revision": "15cadee0447c988a0853",
     "url": "/coineu/static/js/1.15cadee0.chunk.js"
   },
   {
-    "revision": "efa38997373b1fbe6f04",
+    "revision": "bf39ec68c9861c86743a",
     "url": "/coineu/static/css/main.23973e88.chunk.css"
   },
   {
-    "revision": "085e6b02cad503e7a8ae5989b2775fdc",
+    "revision": "22060dc0bd58f6db523ead94f89ec952",
     "url": "/coineu/index.html"
   }
 ];
