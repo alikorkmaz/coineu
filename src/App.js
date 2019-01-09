@@ -127,7 +127,7 @@ class App extends Component {
       paribuKomisyon: this.state.paribuKomisyon,
       paribuFiyat: this.state["paribu" + type + "Bid"],
       bitstampFiyat: this.state["bitstamp" + type + "Ask"],
-      guncelKur: getGuncelKur()
+      guncelKur: this.getGuncelKur()
     };
   }
 
@@ -139,7 +139,7 @@ class App extends Component {
       paribuKomisyon: this.state.paribuKomisyon,
       paribuFiyat: this.state["paribu" + type + "Ask"],
       bitstampFiyat: this.state["bitstamp" + type + "Bid"],
-      guncelKur: getGuncelKur()
+      guncelKur: this.getGuncelKur()
     };
   }
 
