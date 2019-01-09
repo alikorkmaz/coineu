@@ -46,20 +46,6 @@ class Main extends Component {
             <button
               onClick={() =>
                 this.props.onIncrease(
-                  this.props.ratio,
-                  this.props.type,
-                  this.props.attributes.paribuFiyat
-                )
-              }
-              className="custom-btn btn btn-primary btn-xs"
-            >
-              +{this.props.ratio}
-            </button>
-          </div>
-          <div className="col-xs-6">
-            <button
-              onClick={() =>
-                this.props.onIncrease(
                   +this.props.ratio * -1,
                   this.props.type,
                   this.props.attributes.paribuFiyat
@@ -68,6 +54,20 @@ class Main extends Component {
               className="custom-btn btn btn-primary btn-xs"
             >
               -{this.props.ratio}
+            </button>
+          </div>
+          <div className="col-xs-6">
+            <button
+              onClick={() =>
+                this.props.onIncrease(
+                  this.props.ratio,
+                  this.props.type,
+                  this.props.attributes.paribuFiyat
+                )
+              }
+              className="custom-btn btn btn-primary btn-xs"
+            >
+              +{this.props.ratio}
             </button>
           </div>
         </div>

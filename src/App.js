@@ -111,6 +111,14 @@ class App extends Component {
       });
   }
 
+  getGuncelKur() {
+    let gk;
+    if (typeof this.state.guncelKur !== "undefined")
+      gk = +this.state.guncelKur.replace(",", ".");
+    else gk = NaN;
+    return gk;
+  }
+
   getData(type) {
     return {
       yollanan: this.state.yollanan,
@@ -119,7 +127,7 @@ class App extends Component {
       paribuKomisyon: this.state.paribuKomisyon,
       paribuFiyat: this.state["paribu" + type + "Bid"],
       bitstampFiyat: this.state["bitstamp" + type + "Ask"],
-      guncelKur: +this.state.guncelKur
+      guncelKur: getGuncelKur()
     };
   }
 
@@ -131,7 +139,7 @@ class App extends Component {
       paribuKomisyon: this.state.paribuKomisyon,
       paribuFiyat: this.state["paribu" + type + "Ask"],
       bitstampFiyat: this.state["bitstamp" + type + "Bid"],
-      guncelKur: +this.state.guncelKur
+      guncelKur: getGuncelKur()
     };
   }
 
