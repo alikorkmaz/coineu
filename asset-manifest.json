@@ -1,13 +1,13 @@
 {
   "main.css": "/coineu/static/css/main.beb3a04a.chunk.css",
-  "main.js": "/coineu/static/js/main.ff10a6dd.chunk.js",
-  "main.js.map": "/coineu/static/js/main.ff10a6dd.chunk.js.map",
+  "main.js": "/coineu/static/js/main.7d39154e.chunk.js",
+  "main.js.map": "/coineu/static/js/main.7d39154e.chunk.js.map",
   "static/js/1.15cadee0.chunk.js": "/coineu/static/js/1.15cadee0.chunk.js",
   "static/js/1.15cadee0.chunk.js.map": "/coineu/static/js/1.15cadee0.chunk.js.map",
   "runtime~main.js": "/coineu/static/js/runtime~main.1040f0dc.js",
   "runtime~main.js.map": "/coineu/static/js/runtime~main.1040f0dc.js.map",
   "static/css/main.beb3a04a.chunk.css.map": "/coineu/static/css/main.beb3a04a.chunk.css.map",
   "index.html": "/coineu/index.html",
-  "precache-manifest.a05b1f384c93390fb747c38c565340ab.js": "/coineu/precache-manifest.a05b1f384c93390fb747c38c565340ab.js",
+  "precache-manifest.b29b83b631fa47305b034a93541c5bb1.js": "/coineu/precache-manifest.b29b83b631fa47305b034a93541c5bb1.js",
   "service-worker.js": "/coineu/service-worker.js"
 }
