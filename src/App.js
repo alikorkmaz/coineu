@@ -28,43 +28,59 @@ class App extends Component {
           paribuXrpBid: jsonData.XRP_TL.highestBid,
           paribuXrpAsk: jsonData.XRP_TL.lowestAsk,
           yollanan: 25000,
-          wireBedeli: 100,
+          wireBedeli: 50,
           transferBedeli: 10,
-          coinbaseKomisyon: 0,
+          bitstampKomisyon: 0.22,
           paribuKomisyon: 0.15
         });
-        fetch("https://api.pro.coinbase.com/products/BTC-USD/ticker")
-          .then(res => res.json())
-          .then(jsonData => {
-            this.setState({
-              coinbaseBtcBid: jsonData.bid,
-              coinbaseBtcAsk: jsonData.ask
-            });
-          });
-        fetch("https://api.pro.coinbase.com/products/ETH-USD/ticker")
-          .then(res => res.json())
-          .then(jsonData => {
-            this.setState({
-              coinbaseEthBid: jsonData.bid,
-              coinbaseEthAsk: jsonData.ask
-            });
-          });
-        fetch("https://api.pro.coinbase.com/products/LTC-USD/ticker")
-          .then(res => res.json())
-          .then(jsonData => {
-            this.setState({
-              coinbaseLtcBid: jsonData.bid,
-              coinbaseLtcAsk: jsonData.ask
-            });
-          });
         fetch(
           "https://cors-anywhere.herokuapp.com/https://www.bitstamp.net/api/v2/ticker/xrpeur/"
         )
           .then(res => res.json())
           .then(jsonData => {
             this.setState({
-              coinbaseXrpBid: jsonData.bid,
-              coinbaseXrpAsk: jsonData.ask
+              bitstampXrpBid: jsonData.bid,
+              bitstampXrpAsk: jsonData.ask
+            });
+          });
+        fetch(
+          "https://cors-anywhere.herokuapp.com/https://www.bitstamp.net/api/v2/ticker/etheur/"
+        )
+          .then(res => res.json())
+          .then(jsonData => {
+            this.setState({
+              bitstampEthBid: jsonData.bid,
+              bitstampEthAsk: jsonData.ask
+            });
+          });
+        fetch(
+          "https://cors-anywhere.herokuapp.com/https://www.bitstamp.net/api/v2/ticker/btceur/"
+        )
+          .then(res => res.json())
+          .then(jsonData => {
+            this.setState({
+              bitstampBtcBid: jsonData.bid,
+              bitstampBtcAsk: jsonData.ask
+            });
+          });
+        fetch(
+          "https://cors-anywhere.herokuapp.com/https://www.bitstamp.net/api/v2/ticker/ltceur/"
+        )
+          .then(res => res.json())
+          .then(jsonData => {
+            this.setState({
+              bitstampLtcBid: jsonData.bid,
+              bitstampLtcAsk: jsonData.ask
+            });
+          });
+        fetch(
+          "https://cors-anywhere.herokuapp.com/https://www.bitstamp.net/api/v2/ticker/bcheur/"
+        )
+          .then(res => res.json())
+          .then(jsonData => {
+            this.setState({
+              bitstampBchBid: jsonData.bid,
+              bitstampBchAsk: jsonData.ask
             });
           });
 
@@ -77,7 +93,7 @@ class App extends Component {
                 result =>
                   result.props.children[1].props.children[10].props.children[1]
                     .props.children[1].props.children[1].props.children[3].props
-                    .children[3].props.children[1].props.children[3].props
+                    .children[5].props.children[1].props.children[3].props
                     .children
               )
               .then(result => {
@@ -94,11 +110,11 @@ class App extends Component {
     return {
       yollanan: this.state.yollanan,
       wireBedeli: this.state.wireBedeli,
-      coinbaseKomisyon: this.state.coinbaseKomisyon,
+      bitstampKomisyon: this.state.bitstampKomisyon,
       paribuKomisyon: this.state.paribuKomisyon,
       paribuFiyat: this.state["paribu" + type + "Bid"],
-      coinbaseFiyat: this.state["coinbase" + type + "Ask"],
-      guncelKur: this.state.guncelKur
+      bitstampFiyat: this.state["bitstamp" + type + "Ask"],
+      guncelKur: +this.state.guncelKur
     };
   }
 
@@ -106,11 +122,11 @@ class App extends Component {
     return {
       yollanan: this.state.yollanan,
       wireBedeli: this.state.transferBedeli,
-      coinbaseKomisyon: this.state.coinbaseKomisyon,
+      bitstampKomisyon: this.state.bitstampKomisyon,
       paribuKomisyon: this.state.paribuKomisyon,
       paribuFiyat: this.state["paribu" + type + "Ask"],
-      coinbaseFiyat: this.state["coinbase" + type + "Bid"],
-      guncelKur: this.state.guncelKur
+      bitstampFiyat: this.state["bitstamp" + type + "Bid"],
+      guncelKur: +this.state.guncelKur
     };
   }
 
@@ -126,7 +142,7 @@ class App extends Component {
     let newVal = +oldVal + +ratio;
 
     this.setState({
-      ["coinbase" + type + "Bid"]: newVal
+      ["bitstamp" + type + "Bid"]: newVal
     });
   }
 
@@ -160,6 +176,31 @@ class App extends Component {
                   title="Reverse BTC"
                   type="Btc"
                   onIncrease={this.increaseReverse}
+                />
+              }
+            </div>
+          </div>
+          <br />
+          <div className="row">
+            <div className="col-xs-6">
+              {
+                <Main
+                  attributes={this.getData("Xrp")}
+                  title="XRP"
+                  ratio="0.01"
+                  type="Xrp"
+                  onIncrease={this.increase}
+                />
+              }
+            </div>
+            <div className="col-xs-6">
+              {
+                <ReverseMain
+                  attributes={this.getDataReverse("Xrp")}
+                  title="Reverse XRP"
+                  ratio="0.002"
+                  onIncrease={this.increaseReverse}
+                  type="Xrp"
                 />
               }
             </div>
@@ -214,33 +255,6 @@ class App extends Component {
               }
             </div>
           </div>
-          <br />
-          {/* <div className="row">
-            <div className="col-xs-6">
-              {
-                <Main
-                  attributes={this.getData("Xrp")}
-                  title="XRP"
-                  ratio="0.01"
-                  passive
-                  type="Xrp"
-                  onIncrease={this.increase}
-                />
-              }
-            </div>
-            <div className="col-xs-6">
-              {
-                <ReverseMain
-                  attributes={this.getDataReverse("Xrp")}
-                  title="Reverse XRP"
-                  ratio="0.002"
-                  passive
-                  onIncrease={this.increaseReverse}
-                  type="Xrp"
-                />
-              }
-            </div>
-          </div> */}
         </div>
         <br />
         <br />
