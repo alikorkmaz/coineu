@@ -84,25 +84,30 @@ class App extends Component {
             });
           });
 
-        fetch("https://cors-anywhere.herokuapp.com/https://www.doviz.com").then(
-          res => {
-            res
-              .text()
-              .then(result => Parser(result))
-              .then(
-                result =>
-                  result.props.children[1].props.children[10].props.children[1]
-                    .props.children[1].props.children[1].props.children[3].props
-                    .children[5].props.children[1].props.children[3].props
-                    .children
-              )
-              .then(result => {
-                this.setState({
-                  guncelKur: result
-                });
+        let headers = new Headers({
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+        });
+        fetch("https://cors-anywhere.herokuapp.com/https://www.doviz.com", {
+          method: "GET",
+          headers: headers
+        }).then(res => {
+          res
+            .text()
+            .then(result => Parser(result))
+            .then(
+              result =>
+                result.props.children[1].props.children[10].props.children[1]
+                  .props.children[1].props.children[1].props.children[3].props
+                  .children[5].props.children[1].props.children[3].props
+                  .children
+            )
+            .then(result => {
+              this.setState({
+                guncelKur: result
               });
-          }
-        );
+            });
+        });
       });
   }
 
