@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Main from "./components/main";
 import ReverseMain from "./components/reverseMain";
 import "./App.css";
+import Parser from "html-react-parser";
 
 class App extends Component {
   constructor(props) {
@@ -66,13 +67,26 @@ class App extends Component {
               coinbaseXrpAsk: jsonData.ask
             });
           });
-        fetch("https://ferdielik.com/rest/crypto/old/ticker")
-          .then(res => res.json())
-          .then(jsonData => {
-            this.setState({
-              guncelKur: jsonData.dollar
-            });
-          });
+
+        fetch("https://cors-anywhere.herokuapp.com/https://www.doviz.com").then(
+          res => {
+            res
+              .text()
+              .then(result => Parser(result))
+              .then(
+                result =>
+                  result.props.children[1].props.children[10].props.children[1]
+                    .props.children[1].props.children[1].props.children[3].props
+                    .children[3].props.children[1].props.children[3].props
+                    .children
+              )
+              .then(result => {
+                this.setState({
+                  guncelKur: result
+                });
+              });
+          }
+        );
       });
   }
 
